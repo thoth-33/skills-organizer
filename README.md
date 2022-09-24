@@ -1,4 +1,4 @@
-# Inventory Count [![Plugin Installs](https://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/skills-organizer)](https://runelite.net/plugin-hub/robrichardson13)
+# Skills Organizer [![Plugin Installs](https://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/skills-organizer)](https://runelite.net/plugin-hub/robrichardson13)
 ##### A plugin for [RuneLite](https://runelite.net/)
 
 
