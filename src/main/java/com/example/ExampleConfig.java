@@ -1,12 +1,16 @@
 package com.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
+@ConfigGroup(ExampleConfig.GROUP)
 public interface ExampleConfig extends Config
 {
+	String GROUP = "SkillsOrganizor";
+
 	@ConfigItem(
 		keyName = "attack",
 		name = "Attack",
@@ -118,11 +122,11 @@ public interface ExampleConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "theiving",
-			name = "Theiving",
-			description = "Set the theiving skill option"
+			keyName = "thieving",
+			name = "thieving",
+			description = "Set the thieving skill option"
 	)
-	default SkillOption theiving()
+	default SkillOption thieving()
 	{
 		return SkillOption.TWELVE;
 	}
@@ -238,11 +242,53 @@ public interface ExampleConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "totalLevel",
+			keyName = "overall",
 			name = "Total Level",
 			description = "Set the total level option"
 	)
-	default SkillOption totalLevel() {
+	default SkillOption overall() {
 		return SkillOption.TWENTY_FOUR;
+	}
+
+	@Getter
+	@AllArgsConstructor
+	enum SkillOption
+	{
+		HIDDEN("Hidden", 0,0),
+		ONE("Position 1", 1, 1),
+		TWO("Position 2", 1,32),
+		THREE("Position 3", 1,65),
+		FOUR("Position 4", 1,97),
+		FIVE("Position 5", 1,129),
+		SIX("Position 6", 1,161),
+		SEVEN("Position 7", 1,193),
+		EIGHT("Position 8", 1,225),
+		NINE("Position 9", 64,1),
+		TEN("Position 10", 64,33),
+		ELEVEN("Position 11", 64,65),
+		TWELVE("Position 12", 64,97),
+		THIRTEEN("Position 13", 64,129),
+		FOURTEEN("Position 14", 64,161),
+		FIFTEEN("Position 15", 64,193),
+		SIXTEEN("Position 16", 64,225),
+		SEVENTEEN("Position 17", 127,1),
+		EIGHTEEN("Position 18", 127,33),
+		NINETEEN("Position 19", 127,65),
+		TWENTY("Position 20", 127,97),
+		TWENTY_ONE("Position 21", 127,129),
+		TWENTY_TWO("Position 22", 127,161),
+		TWENTY_THREE("Position 23", 127,193),
+		TWENTY_FOUR("Position 24", 127,225),
+		;
+
+		private final String name;
+		private final int x;
+		private final int y;
+
+		@Override
+		public String toString()
+		{
+			return name;
+		}
 	}
 }
