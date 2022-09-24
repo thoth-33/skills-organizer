@@ -1,4 +1,4 @@
-package com.example;
+package io.robrichardson.skillsorganizer;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,10 +6,10 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup(ExampleConfig.GROUP)
-public interface ExampleConfig extends Config
+@ConfigGroup(SkillsOrganizerConfig.GROUP)
+public interface SkillsOrganizerConfig extends Config
 {
-	String GROUP = "SkillsOrganizor";
+	String GROUP = "SkillsOrganizer";
 
 	@ConfigItem(
 		keyName = "attack",
@@ -123,7 +123,7 @@ public interface ExampleConfig extends Config
 
 	@ConfigItem(
 			keyName = "thieving",
-			name = "thieving",
+			name = "Thieving",
 			description = "Set the thieving skill option"
 	)
 	default SkillOption thieving()
