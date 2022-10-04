@@ -79,7 +79,7 @@ public class SkillsOrganizerPlugin extends Plugin
 			SkillOrganizerData skillOrganizerData = SkillOrganizerData.get(idx);
 			if(skillOrganizerData == null) continue;
 
-			SkillsOrganizerConfig.SkillOption skillConfig = getSkillConfig(skillOrganizerData);
+			SkillsOrganizerConfig.SkillOption skillConfig = skillOrganizerData.getSkillConfig().apply(config);
 
 			if(skillConfig == SkillsOrganizerConfig.SkillOption.HIDDEN) {
 				skillTile.setHidden(true);
@@ -115,16 +115,6 @@ public class SkillsOrganizerPlugin extends Plugin
 
 			skillTile.revalidate();
 			skillTile.setHidden(false);
-		}
-	}
-
-	private SkillsOrganizerConfig.SkillOption getSkillConfig(SkillOrganizerData skillOrganizerData) {
-		String methodName = skillOrganizerData.getConfigMethodName();
-		try {
-			Method method = SkillsOrganizerConfig.class.getMethod(methodName);
-			return (SkillsOrganizerConfig.SkillOption) method.invoke(config);
-		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-			return SkillsOrganizerConfig.SkillOption.HIDDEN;
 		}
 	}
 }
