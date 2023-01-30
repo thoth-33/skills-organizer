@@ -15,8 +15,6 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.callback.ClientThread;
 
 import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Objects;
 
 @Slf4j
@@ -83,9 +81,8 @@ public class SkillsOrganizerPlugin extends Plugin
 			SkillOrganizerData skillOrganizerData = SkillOrganizerData.get(idx);
 			if(skillOrganizerData == null) continue;
 
-			// Grab config values for this skill
-			SkillsOrganizerConfig.SkillPositionOption skillPositionConfig = getSkillPositionConfig(skillOrganizerData);
-			SkillsOrganizerConfig.SkillVisibilityOption skillVisibilityOption = getSkillVisibilityConfig(skillOrganizerData);
+			SkillsOrganizerConfig.SkillPositionOption skillPositionConfig = skillOrganizerData.getSkillPositionConfig().apply(config);
+			SkillsOrganizerConfig.SkillVisibilityOption skillVisibilityOption = skillOrganizerData.getSkillVisibilityConfig().apply(config);
 
 			skillTile.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
 			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
@@ -211,27 +208,5 @@ public class SkillsOrganizerPlugin extends Plugin
 		}
 
 		groups = new SkillWidgetGroup[SkillOrganizerData.values().length];
-	}
-
-	private SkillsOrganizerConfig.SkillPositionOption getSkillPositionConfig(SkillOrganizerData skillOrganizerData) {
-		String methodName = skillOrganizerData.getConfigPositionMethodName();
-		Method method = null;
-		try {
-			method = SkillsOrganizerConfig.class.getMethod(methodName);
-			return (SkillsOrganizerConfig.SkillPositionOption) method.invoke(config);
-		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private SkillsOrganizerConfig.SkillVisibilityOption getSkillVisibilityConfig(SkillOrganizerData skillOrganizerData) {
-		String methodName = skillOrganizerData.getConfigVisibilityMethodName();
-		Method method = null;
-		try {
-			method = SkillsOrganizerConfig.class.getMethod(methodName);
-			return (SkillsOrganizerConfig.SkillVisibilityOption) method.invoke(config);
-		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
 	}
 }
