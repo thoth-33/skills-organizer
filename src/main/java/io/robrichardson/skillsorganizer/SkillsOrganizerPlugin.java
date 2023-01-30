@@ -13,8 +13,7 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.callback.ClientThread;
-
-import java.awt.*;
+import java.awt.Color;
 import java.util.Objects;
 
 @Slf4j
@@ -37,15 +36,15 @@ public class SkillsOrganizerPlugin extends Plugin
 	private SkillWidgetGroup[] groups = new SkillWidgetGroup[SkillOrganizerData.values().length];
 
 	@Override
-	protected void startUp()
+	protected void startUp() throws Exception
 	{
 		if (client.getGameState() == GameState.LOGGED_IN) {
-			clientThread.invoke(this::updateSkillBars);
+			clientThread.invoke(this::setupSkillBars);
 		}
 	}
 
 	@Override
-	protected void shutDown()
+	protected void shutDown() throws Exception
 	{
 		clientThread.invoke(this::resetSkillBars);
 	}
@@ -60,17 +59,17 @@ public class SkillsOrganizerPlugin extends Plugin
 	public void onConfigChanged(ConfigChanged event) {
 		if (!SkillsOrganizerConfig.GROUP.equals(event.getGroup())) return;
 
-		clientThread.invoke(this::updateSkillBars);
+		clientThread.invoke(this::setupSkillBars);
 	}
 
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event) {
 		if (event.getScriptId() == SCRIPTID_STATS_SKILLTOTAL) {
-			updateSkillBars();
+			setupSkillBars();
 		}
 	}
 
-	private void updateSkillBars() {
+	private void setupSkillBars() {
 		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
 		if (skillsContainer == null) {
 			return;
