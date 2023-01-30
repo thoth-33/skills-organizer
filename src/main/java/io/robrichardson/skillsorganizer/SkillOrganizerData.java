@@ -7,35 +7,36 @@ import net.runelite.api.Skill;
 @Getter
 @AllArgsConstructor
 public enum SkillOrganizerData {
-    ATTACK(Skill.ATTACK, SkillsOrganizerConfig.SkillOption.ONE, "attack"),
-    STRENGTH(Skill.STRENGTH, SkillsOrganizerConfig.SkillOption.TWO, "strength"),
-    DEFENCE(Skill.DEFENCE, SkillsOrganizerConfig.SkillOption.THREE, "defence"),
-    RANGED(Skill.RANGED, SkillsOrganizerConfig.SkillOption.FOUR, "ranged"),
-    PRAYER(Skill.PRAYER, SkillsOrganizerConfig.SkillOption.FIVE, "prayer"),
-    MAGIC(Skill.MAGIC, SkillsOrganizerConfig.SkillOption.SIX, "magic"),
-    RUNECRAFT(Skill.RUNECRAFT, SkillsOrganizerConfig.SkillOption.SEVEN, "runecraft"),
-    CONSTRUCTION(Skill.CONSTRUCTION, SkillsOrganizerConfig.SkillOption.EIGHT, "construction"),
-    HITPOINTS(Skill.HITPOINTS, SkillsOrganizerConfig.SkillOption.NINE, "hitpoints"),
-    AGILITY(Skill.AGILITY, SkillsOrganizerConfig.SkillOption.TEN, "agility"),
-    HERBLORE(Skill.HERBLORE, SkillsOrganizerConfig.SkillOption.ELEVEN, "herblore"),
-    THIEVING(Skill.THIEVING, SkillsOrganizerConfig.SkillOption.TWELVE, "thieving"),
-    CRAFTING(Skill.CRAFTING, SkillsOrganizerConfig.SkillOption.THIRTEEN, "crafting"),
-    FLETCHING(Skill.FLETCHING, SkillsOrganizerConfig.SkillOption.FOURTEEN, "fletching"),
-    SLAYER(Skill.SLAYER, SkillsOrganizerConfig.SkillOption.FIFTEEN, "slayer"),
-    HUNTER(Skill.HUNTER, SkillsOrganizerConfig.SkillOption.SIXTEEN, "hunter"),
-    MINING(Skill.MINING, SkillsOrganizerConfig.SkillOption.SEVENTEEN, "mining"),
-    SMITHING(Skill.RANGED, SkillsOrganizerConfig.SkillOption.EIGHTEEN, "smithing"),
-    FISHING(Skill.FISHING, SkillsOrganizerConfig.SkillOption.NINETEEN, "fishing"),
-    COOKING(Skill.COOKING, SkillsOrganizerConfig.SkillOption.TWENTY, "cooking"),
-    FIREMAKING(Skill.FIREMAKING, SkillsOrganizerConfig.SkillOption.TWENTY_ONE, "firemaking"),
-    WOODCUTTING(Skill.WOODCUTTING, SkillsOrganizerConfig.SkillOption.TWENTY_TWO, "woodcutting"),
-    FARMING(Skill.FARMING, SkillsOrganizerConfig.SkillOption.TWENTY_THREE, "farming"),
-    OVERALL(Skill.OVERALL, SkillsOrganizerConfig.SkillOption.TWENTY_FOUR, "overall"),
+    ATTACK(Skill.ATTACK, SkillsOrganizerConfig.SkillPositionOption.ONE, "attackPosition", "attackVisibility"),
+    STRENGTH(Skill.STRENGTH, SkillsOrganizerConfig.SkillPositionOption.TWO, "strengthPosition", "strengthVisibility"),
+    DEFENCE(Skill.DEFENCE, SkillsOrganizerConfig.SkillPositionOption.THREE, "defencePosition", "defenceVisibility"),
+    RANGED(Skill.RANGED, SkillsOrganizerConfig.SkillPositionOption.FOUR, "rangedPosition", "rangedVisibility"),
+    PRAYER(Skill.PRAYER, SkillsOrganizerConfig.SkillPositionOption.FIVE, "prayerPosition", "prayerVisibility"),
+    MAGIC(Skill.MAGIC, SkillsOrganizerConfig.SkillPositionOption.SIX, "magicPosition", "magicVisibility"),
+    RUNECRAFT(Skill.RUNECRAFT, SkillsOrganizerConfig.SkillPositionOption.SEVEN, "runecraftPosition", "runecraftVisibility"),
+    CONSTRUCTION(Skill.CONSTRUCTION, SkillsOrganizerConfig.SkillPositionOption.EIGHT, "constructionPosition", "constructionVisibility"),
+    HITPOINTS(Skill.HITPOINTS, SkillsOrganizerConfig.SkillPositionOption.NINE, "hitpointsPosition", "hitpointsVisibility"),
+    AGILITY(Skill.AGILITY, SkillsOrganizerConfig.SkillPositionOption.TEN, "agilityPosition", "agilityVisibility"),
+    HERBLORE(Skill.HERBLORE, SkillsOrganizerConfig.SkillPositionOption.ELEVEN, "herblorePosition", "herbloreVisibility"),
+    THIEVING(Skill.THIEVING, SkillsOrganizerConfig.SkillPositionOption.TWELVE, "thievingPosition", "thievingVisibility"),
+    CRAFTING(Skill.CRAFTING, SkillsOrganizerConfig.SkillPositionOption.THIRTEEN, "craftingPosition", "craftingVisibility"),
+    FLETCHING(Skill.FLETCHING, SkillsOrganizerConfig.SkillPositionOption.FOURTEEN, "fletchingPosition", "fletchingVisibility"),
+    SLAYER(Skill.SLAYER, SkillsOrganizerConfig.SkillPositionOption.FIFTEEN, "slayerPosition", "slayerVisibility"),
+    HUNTER(Skill.HUNTER, SkillsOrganizerConfig.SkillPositionOption.SIXTEEN, "hunterPosition", "hunterVisibility"),
+    MINING(Skill.MINING, SkillsOrganizerConfig.SkillPositionOption.SEVENTEEN, "miningPosition", "miningVisibility"),
+    SMITHING(Skill.RANGED, SkillsOrganizerConfig.SkillPositionOption.EIGHTEEN, "smithingPosition", "smithingVisibility"),
+    FISHING(Skill.FISHING, SkillsOrganizerConfig.SkillPositionOption.NINETEEN, "fishingPosition", "fishingVisibility"),
+    COOKING(Skill.COOKING, SkillsOrganizerConfig.SkillPositionOption.TWENTY, "cookingPosition", "cookingVisibility"),
+    FIREMAKING(Skill.FIREMAKING, SkillsOrganizerConfig.SkillPositionOption.TWENTY_ONE, "firemakingPosition", "firemakingVisibility"),
+    WOODCUTTING(Skill.WOODCUTTING, SkillsOrganizerConfig.SkillPositionOption.TWENTY_TWO, "woodcuttingPosition", "woodcuttingVisibility"),
+    FARMING(Skill.FARMING, SkillsOrganizerConfig.SkillPositionOption.TWENTY_THREE, "farmingPosition", "farmingVisibility"),
+    OVERALL(Skill.OVERALL, SkillsOrganizerConfig.SkillPositionOption.TWENTY_FOUR, "overallPosition", "overallVisibility"),
     ;
 
     private final Skill skill;
-    private final SkillsOrganizerConfig.SkillOption defaultPosition;
-    private final String configMethodName;
+    private final SkillsOrganizerConfig.SkillPositionOption defaultPosition;
+    private final String configPositionMethodName;
+    private final String configVisibilityMethodName;
 
     static SkillOrganizerData get(int idx) {
         if (idx < 0 || idx >= values().length) {

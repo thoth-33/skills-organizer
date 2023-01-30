@@ -12,249 +12,487 @@ public interface SkillsOrganizerConfig extends Config
 	String GROUP = "SkillsOrganizer";
 
 	@ConfigItem(
-		keyName = "attack",
-		name = "Attack",
-		description = "Set the attack skill option"
+		keyName = "attackPosition",
+		name = "Attack Position",
+		description = "Set the attack skill position"
 	)
-	default SkillOption attack()
+	default SkillPositionOption attackPosition()
 	{
-		return SkillOption.ONE;
+		return SkillPositionOption.ONE;
 	}
 
 	@ConfigItem(
-			keyName = "strength",
-			name = "Strength",
-			description = "Set the strength skill option"
+			keyName = "strengthPosition",
+			name = "Strength Position",
+			description = "Set the strength skill position"
 	)
-	default SkillOption strength()
+	default SkillPositionOption strengthPosition()
 	{
-		return SkillOption.TWO;
+		return SkillPositionOption.TWO;
 	}
 
 	@ConfigItem(
-			keyName = "defence",
-			name = "Defence",
-			description = "Set the defence skill option"
+			keyName = "defencePosition",
+			name = "Defence Position",
+			description = "Set the defence skill position"
 	)
-	default SkillOption defence()
+	default SkillPositionOption defencePosition()
 	{
-		return SkillOption.THREE;
+		return SkillPositionOption.THREE;
 	}
 
 	@ConfigItem(
-			keyName = "ranged",
-			name = "Ranged",
-			description = "Set the ranged skill option"
+			keyName = "rangedPosition",
+			name = "Ranged Position",
+			description = "Set the ranged skill position"
 	)
-	default SkillOption ranged()
+	default SkillPositionOption rangedPosition()
 	{
-		return SkillOption.FOUR;
+		return SkillPositionOption.FOUR;
 	}
 
 	@ConfigItem(
-			keyName = "prayer",
-			name = "Prayer",
-			description = "Set the prayer skill option"
+			keyName = "prayerPosition",
+			name = "Prayer Position",
+			description = "Set the prayer skill position"
 	)
-	default SkillOption prayer()
+	default SkillPositionOption prayerPosition()
 	{
-		return SkillOption.FIVE;
+		return SkillPositionOption.FIVE;
 	}
 
 	@ConfigItem(
-			keyName = "magic",
-			name = "Magic",
-			description = "Set the magic skill option"
+			keyName = "magicPosition",
+			name = "Magic Position",
+			description = "Set the magic skill position"
 	)
-	default SkillOption magic()
+	default SkillPositionOption magicPosition()
 	{
-		return SkillOption.SIX;
+		return SkillPositionOption.SIX;
 	}
 
 	@ConfigItem(
-			keyName = "runecraft",
-			name = "Runecraft",
-			description = "Set the runecraft skill option"
+			keyName = "runecraftPosition",
+			name = "Runecraft Position",
+			description = "Set the runecraft skill position"
 	)
-	default SkillOption runecraft()
+	default SkillPositionOption runecraftPosition()
 	{
-		return SkillOption.SEVEN;
+		return SkillPositionOption.SEVEN;
 	}
 
 	@ConfigItem(
-			keyName = "construction",
-			name = "Construction",
-			description = "Set the construction skill option"
+			keyName = "constructionPosition",
+			name = "Construction Position",
+			description = "Set the construction skill position"
 	)
-	default SkillOption construction()
+	default SkillPositionOption constructionPosition()
 	{
-		return SkillOption.EIGHT;
+		return SkillPositionOption.EIGHT;
 	}
 
 	@ConfigItem(
-			keyName = "hitpoints",
-			name = "Hitpoints",
-			description = "Set the hitpoints skill option"
+			keyName = "agilityPosition",
+			name = "Agility Position",
+			description = "Set the agility skill position"
 	)
-	default SkillOption hitpoints()
+	default SkillPositionOption agilityPosition()
 	{
-		return SkillOption.NINE;
+		return SkillPositionOption.TEN;
 	}
 
 	@ConfigItem(
-			keyName = "agility",
-			name = "Agility",
-			description = "Set the agility skill option"
+			keyName = "herblorePosition",
+			name = "Herblore Position",
+			description = "Set the herblore skill position"
 	)
-	default SkillOption agility()
+	default SkillPositionOption herblorePosition()
 	{
-		return SkillOption.TEN;
+		return SkillPositionOption.ELEVEN;
 	}
 
 	@ConfigItem(
-			keyName = "herblore",
-			name = "Herblore",
-			description = "Set the herblore skill option"
+			keyName = "thievingPosition",
+			name = "Thieving Position",
+			description = "Set the thieving skill position"
 	)
-	default SkillOption herblore()
+	default SkillPositionOption thievingPosition()
 	{
-		return SkillOption.ELEVEN;
+		return SkillPositionOption.TWELVE;
 	}
 
 	@ConfigItem(
-			keyName = "thieving",
-			name = "Thieving",
-			description = "Set the thieving skill option"
+			keyName = "craftingPosition",
+			name = "Crafting Position",
+			description = "Set the crafting skill position"
 	)
-	default SkillOption thieving()
+	default SkillPositionOption craftingPosition()
 	{
-		return SkillOption.TWELVE;
+		return SkillPositionOption.THIRTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "crafting",
-			name = "Crafting",
-			description = "Set the crafting skill option"
+			keyName = "fletchingPosition",
+			name = "Fletching Position",
+			description = "Set the fletching skill position"
 	)
-	default SkillOption crafting()
+	default SkillPositionOption fletchingPosition()
 	{
-		return SkillOption.THIRTEEN;
+		return SkillPositionOption.FOURTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "fletching",
-			name = "Fletching",
-			description = "Set the fletching skill option"
+			keyName = "slayerPosition",
+			name = "Slayer Position",
+			description = "Set the slayer skill position"
 	)
-	default SkillOption fletching()
+	default SkillPositionOption slayerPosition()
 	{
-		return SkillOption.FOURTEEN;
+		return SkillPositionOption.FIFTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "slayer",
-			name = "Slayer",
-			description = "Set the slayer skill option"
+			keyName = "hunterPosition",
+			name = "Hunter Position",
+			description = "Set the hunter skill position"
 	)
-	default SkillOption slayer()
+	default SkillPositionOption hunterPosition()
 	{
-		return SkillOption.FIFTEEN;
+		return SkillPositionOption.SIXTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "hunter",
-			name = "Hunter",
-			description = "Set the hunter skill option"
+			keyName = "miningPosition",
+			name = "Mining Position",
+			description = "Set the mining skill position"
 	)
-	default SkillOption hunter()
+	default SkillPositionOption miningPosition()
 	{
-		return SkillOption.SIXTEEN;
+		return SkillPositionOption.SEVENTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "mining",
-			name = "Mining",
-			description = "Set the mining skill option"
+			keyName = "smithingPosition",
+			name = "Smithing Position",
+			description = "Set the smithing skill position"
 	)
-	default SkillOption mining()
+	default SkillPositionOption smithingPosition()
 	{
-		return SkillOption.SEVENTEEN;
+		return SkillPositionOption.EIGHTEEN;
 	}
 
 	@ConfigItem(
-			keyName = "smithing",
-			name = "Smithing",
-			description = "Set the smithing skill option"
+			keyName = "fishingPosition",
+			name = "Fishing Position",
+			description = "Set the fishing skill position"
 	)
-	default SkillOption smithing()
+	default SkillPositionOption fishingPosition()
 	{
-		return SkillOption.EIGHTEEN;
+		return SkillPositionOption.NINETEEN;
 	}
 
 	@ConfigItem(
-			keyName = "fishing",
-			name = "Fishing",
-			description = "Set the fishing skill option"
+			keyName = "cookingPosition",
+			name = "Cooking Position",
+			description = "Set the cooking skill position"
 	)
-	default SkillOption fishing()
+	default SkillPositionOption cookingPosition()
 	{
-		return SkillOption.NINETEEN;
+		return SkillPositionOption.TWENTY;
 	}
 
 	@ConfigItem(
-			keyName = "cooking",
-			name = "Cooking",
-			description = "Set the cooking skill option"
+			keyName = "firemakingPosition",
+			name = "Firemaking Position",
+			description = "Set the firemaking skill position"
 	)
-	default SkillOption cooking()
+	default SkillPositionOption firemakingPosition()
 	{
-		return SkillOption.TWENTY;
+		return SkillPositionOption.TWENTY_ONE;
 	}
 
 	@ConfigItem(
-			keyName = "firemaking",
-			name = "Firemaking",
-			description = "Set the firemaking skill option"
+			keyName = "woodcuttingPosition",
+			name = "Woodcutting Position",
+			description = "Set the woodcutting skill position"
 	)
-	default SkillOption firemaking()
+	default SkillPositionOption woodcuttingPosition()
 	{
-		return SkillOption.TWENTY_ONE;
+		return SkillPositionOption.TWENTY_TWO;
 	}
 
 	@ConfigItem(
-			keyName = "woodcutting",
-			name = "Woodcutting",
-			description = "Set the woodcutting skill option"
+			keyName = "farmingPosition",
+			name = "Farming Position",
+			description = "Set the farming skill position"
 	)
-	default SkillOption woodcutting()
+	default SkillPositionOption farmingPosition()
 	{
-		return SkillOption.TWENTY_TWO;
+		return SkillPositionOption.TWENTY_THREE;
 	}
 
 	@ConfigItem(
-			keyName = "farming",
-			name = "Farming",
-			description = "Set the farming skill option"
+			keyName = "overallPosition",
+			name = "Total Level Position",
+			description = "Set the total level position"
 	)
-	default SkillOption farming()
-	{
-		return SkillOption.TWENTY_THREE;
+	default SkillPositionOption overallPosition() {
+		return SkillPositionOption.TWENTY_FOUR;
 	}
 
 	@ConfigItem(
-			keyName = "overall",
-			name = "Total Level",
-			description = "Set the total level option"
+			keyName = "attackVisibility",
+			name = "Attack Visibility",
+			description = "Set the attack skill visibility"
 	)
-	default SkillOption overall() {
-		return SkillOption.TWENTY_FOUR;
+	default SkillVisibilityOption attackVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "strengthVisibility",
+			name = "Strength Visibility",
+			description = "Set the strength skill visibility"
+	)
+	default SkillVisibilityOption strengthVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "defenceVisibility",
+			name = "Defence Visibility",
+			description = "Set the defence skill visibility"
+	)
+	default SkillVisibilityOption defenceVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "rangedVisibility",
+			name = "Ranged Visibility",
+			description = "Set the ranged skill visibility"
+	)
+	default SkillVisibilityOption rangedVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "prayerVisibility",
+			name = "Prayer Visibility",
+			description = "Set the prayer skill visibility"
+	)
+	default SkillVisibilityOption prayerVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "magicVisibility",
+			name = "Magic Visibility",
+			description = "Set the magic skill visibility"
+	)
+	default SkillVisibilityOption magicVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "runecraftVisibility",
+			name = "Runecraft Visibility",
+			description = "Set the runecraft skill visibility"
+	)
+	default SkillVisibilityOption runecraftVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "constructionVisibility",
+			name = "Construction Visibility",
+			description = "Set the construction skill visibility"
+	)
+	default SkillVisibilityOption constructionVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "hitpointsPosition",
+			name = "Hitpoints Position",
+			description = "Set the hitpoints skill position"
+	)
+	default SkillPositionOption hitpointsPosition()
+	{
+		return SkillPositionOption.NINE;
+	}
+
+	@ConfigItem(
+			keyName = "hitpointsVisibility",
+			name = "Hitpoints Visibility",
+			description = "Set the hitpoints skill visibility"
+	)
+	default SkillVisibilityOption hitpointsVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "agilityVisibility",
+			name = "Agility Visibility",
+			description = "Set the agility skill visibility"
+	)
+	default SkillVisibilityOption agilityVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "herbloreVisibility",
+			name = "Herblore Visibility",
+			description = "Set the herblore skill visibility"
+	)
+	default SkillVisibilityOption herbloreVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "thievingVisibility",
+			name = "Thieving Visibility",
+			description = "Set the thieving skill visibility"
+	)
+	default SkillVisibilityOption thievingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "craftingVisibility",
+			name = "Crafting Visibility",
+			description = "Set the crafting skill visibility"
+	)
+	default SkillVisibilityOption craftingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "fletchingVisibility",
+			name = "Fletching Visibility",
+			description = "Set the fletching skill visibility"
+	)
+	default SkillVisibilityOption fletchingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "slayerVisibility",
+			name = "Slayer Visibility",
+			description = "Set the slayer skill visibility"
+	)
+	default SkillVisibilityOption slayerVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "hunterVisibility",
+			name = "Hunter Visibility",
+			description = "Set the hunter skill visibility"
+	)
+	default SkillVisibilityOption hunterVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "miningVisibility",
+			name = "Mining Visibility",
+			description = "Set the mining skill visibility"
+	)
+	default SkillVisibilityOption miningVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "smithingVisibility",
+			name = "Smithing Visibility",
+			description = "Set the smithing skill visibility"
+	)
+	default SkillVisibilityOption smithingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "fishingVisibility",
+			name = "Fishing Visibility",
+			description = "Set the fishing skill visibility"
+	)
+	default SkillVisibilityOption fishingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "cookingVisibility",
+			name = "Cooking Visibility",
+			description = "Set the cooking skill visibility"
+	)
+	default SkillVisibilityOption cookingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "firemakingVisibility",
+			name = "Firemaking Visibility",
+			description = "Set the firemaking skill visibility"
+	)
+	default SkillVisibilityOption firemakingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "woodcuttingVisibility",
+			name = "Woodcutting Visibility",
+			description = "Set the woodcutting skill visibility"
+	)
+	default SkillVisibilityOption woodcuttingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "farmingVisibility",
+			name = "Farming Visibility",
+			description = "Set the farming skill visibility"
+	)
+	default SkillVisibilityOption farmingVisibility()
+	{
+		return SkillVisibilityOption.NORMAL;
+	}
+
+	@ConfigItem(
+			keyName = "overallVisibility",
+			name = "Total Level Visibility",
+			description = "Set the total level visibility"
+	)
+	default SkillVisibilityOption overallVisibility() {
+		return SkillVisibilityOption.NORMAL;
 	}
 
 	@Getter
 	@AllArgsConstructor
-	enum SkillOption
+	enum SkillPositionOption
 	{
-		HIDDEN("Hidden", 0,0),
 		ONE("Position 1", 1, 1),
 		TWO("Position 2", 1,32),
 		THREE("Position 3", 1,65),
@@ -284,6 +522,25 @@ public interface SkillsOrganizerConfig extends Config
 		private final String name;
 		private final int x;
 		private final int y;
+
+		@Override
+		public String toString()
+		{
+			return name;
+		}
+	}
+
+	@Getter
+	@AllArgsConstructor
+	enum SkillVisibilityOption
+	{
+		NORMAL("Normal"),
+		HIDE("Hide"),
+		FADE("Fade"),
+		DARK("Dark"),
+		;
+
+		private final String name;
 
 		@Override
 		public String toString()
