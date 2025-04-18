@@ -84,7 +84,7 @@ public class SkillsOrganizerPlugin extends Plugin
 			SkillsOrganizerConfig.SkillVisibilityOption skillVisibilityOption = skillOrganizerData.getSkillVisibilityConfig().apply(config);
 
 			skillTile.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
+			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 			skillTile.setOriginalX(skillPositionConfig.getX());
 			skillTile.setOriginalY(skillPositionConfig.getY());
 			skillTile.revalidate();
@@ -129,7 +129,7 @@ public class SkillsOrganizerPlugin extends Plugin
 		left.setOriginalWidth(36);
 		left.setOriginalHeight(36);
 		left.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-		left.setXPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		left.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 		left.setOriginalX(-2);
 		left.setOriginalY(-2);
 		left.setOpacity(90);
@@ -141,7 +141,7 @@ public class SkillsOrganizerPlugin extends Plugin
 		right.setOriginalWidth(36);
 		right.setOriginalHeight(36);
 		right.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-		right.setXPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		right.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 		right.setOriginalX(28);
 		right.setOriginalY(-2);
 		right.setOpacity(90);
@@ -149,15 +149,19 @@ public class SkillsOrganizerPlugin extends Plugin
 		right.revalidate();
 
 		Widget darken = skillTile.createChild(-1, WidgetType.RECTANGLE);
-		darken.setXPositionMode(WidgetPositionMode.ABSOLUTE_CENTER);
+		darken.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
+		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		darken.setOriginalX(0);
+		darken.setOriginalY(0);
 		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_CENTER);
-		darken.setWidthMode(WidgetSizeMode.MINUS);
-		darken.setHeightMode(WidgetSizeMode.MINUS);
-		darken.setOriginalWidth(0);
-		darken.setOriginalHeight(0);
+		darken.setWidthMode(WidgetSizeMode.ABSOLUTE);
+		darken.setHeightMode(WidgetSizeMode.ABSOLUTE);
+		darken.setOriginalWidth(32);
+		darken.setOriginalHeight(32);
 		darken.setFilled(true);
 		darken.setTextColor(Color.BLACK.getRGB());
 		darken.setOpacity(90);
+		darken.setOnTop(true);
 		darken.setHidden(true);
 		darken.revalidate();
 
