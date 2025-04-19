@@ -494,7 +494,7 @@ public interface SkillsOrganizerConfig extends Config
 	enum SkillPositionOption
 	{
 		ONE("Position 1", 1, 1),
-		TWO("Position 2", 1,33),
+		TWO("Position 2", 1,32),
 		THREE("Position 3", 1,65),
 		FOUR("Position 4", 1,97),
 		FIVE("Position 5", 1,129),
