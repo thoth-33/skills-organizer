@@ -15,6 +15,8 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.callback.ClientThread;
 import java.awt.Color;
 import java.util.Objects;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.WidgetLoaded;
 
 @Slf4j
 @PluginDescriptor(
@@ -68,6 +70,22 @@ public class SkillsOrganizerPlugin extends Plugin
 			setupSkillBars();
 		}
 	}
+	@Subscribe
+	public void onGameStateChanged(GameStateChanged event)
+	{
+		if (event.getGameState() == GameState.LOGGED_IN)
+		{
+			clientThread.invokeLater(this::setupSkillBars);
+		}
+	}
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (event.getGroupId() == WidgetInfo.SKILLS_CONTAINER.getGroupId())
+		{
+			clientThread.invokeLater(this::setupSkillBars);
+		}
+	}
 
 	private void setupSkillBars() {
 		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
@@ -76,6 +94,10 @@ public class SkillsOrganizerPlugin extends Plugin
 		}
 
 		for (Widget skillTile : skillsContainer.getStaticChildren()) {
+			if (skillTile.getWidth() == 0 || skillTile.getHeight() == 0) {
+				clientThread.invokeLater(this::setupSkillBars);
+				return;
+			}
 			int idx = WidgetInfo.TO_CHILD(skillTile.getId()) - 1;
 			SkillOrganizerData skillOrganizerData = SkillOrganizerData.get(idx);
 			if(skillOrganizerData == null) continue;
@@ -148,7 +170,8 @@ public class SkillsOrganizerPlugin extends Plugin
 		right.setHidden(true);
 		right.revalidate();
 
-		Widget darken = skillTile.createChild(-1, WidgetType.RECTANGLE);
+		int newChildIndex = skillTile.getChildren() != null ? skillTile.getChildren().length : 0;
+		Widget darken = skillTile.createChild(newChildIndex, WidgetType.RECTANGLE);
 		darken.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
 		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 		darken.setOriginalX(0);
@@ -156,15 +179,19 @@ public class SkillsOrganizerPlugin extends Plugin
 		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_CENTER);
 		darken.setWidthMode(WidgetSizeMode.ABSOLUTE);
 		darken.setHeightMode(WidgetSizeMode.ABSOLUTE);
-		darken.setOriginalWidth(32);
-		darken.setOriginalHeight(32);
+		darken.setOriginalWidth(skillTile.getWidth());
+		darken.setOriginalHeight(skillTile.getHeight());
 		darken.setFilled(true);
 		darken.setTextColor(Color.BLACK.getRGB());
 		darken.setOpacity(90);
-		darken.setOnTop(true);
 		darken.setHidden(true);
 		darken.revalidate();
 
+		clientThread.invokeLater(() -> {
+			darken.setOriginalWidth(skillTile.getWidth());
+			darken.setOriginalHeight(skillTile.getHeight());
+			darken.revalidate();
+		});
 
 		SkillWidgetGroup newGroup = new SkillWidgetGroup(left, right, darken);
 		groups[idx] = newGroup;
