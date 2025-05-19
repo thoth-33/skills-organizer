@@ -15,6 +15,8 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.callback.ClientThread;
 import java.awt.Color;
 import java.util.Objects;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.WidgetLoaded;
 
 @Slf4j
 @PluginDescriptor(
@@ -68,6 +70,22 @@ public class SkillsOrganizerPlugin extends Plugin
 			setupSkillBars();
 		}
 	}
+	@Subscribe
+	public void onGameStateChanged(GameStateChanged event)
+	{
+		if (event.getGameState() == GameState.LOGGED_IN)
+		{
+			clientThread.invokeLater(this::setupSkillBars);
+		}
+	}
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (event.getGroupId() == WidgetInfo.SKILLS_CONTAINER.getGroupId())
+		{
+			clientThread.invokeLater(this::setupSkillBars);
+		}
+	}
 
 	private void setupSkillBars() {
 		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
@@ -76,6 +94,10 @@ public class SkillsOrganizerPlugin extends Plugin
 		}
 
 		for (Widget skillTile : skillsContainer.getStaticChildren()) {
+			if (skillTile.getWidth() == 0 || skillTile.getHeight() == 0) {
+				clientThread.invokeLater(this::setupSkillBars);
+				return;
+			}
 			int idx = WidgetInfo.TO_CHILD(skillTile.getId()) - 1;
 			SkillOrganizerData skillOrganizerData = SkillOrganizerData.get(idx);
 			if(skillOrganizerData == null) continue;
@@ -84,9 +106,15 @@ public class SkillsOrganizerPlugin extends Plugin
 			SkillsOrganizerConfig.SkillVisibilityOption skillVisibilityOption = skillOrganizerData.getSkillVisibilityConfig().apply(config);
 
 			skillTile.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
+			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 			skillTile.setOriginalX(skillPositionConfig.getX());
-			skillTile.setOriginalY(skillPositionConfig.getY());
+
+			// 🎯 Special-case the 2nd skill (idx = 1) to move it 1px lower
+			int y = skillPositionConfig.getY();
+			if (idx == 1) {
+				y += 1;
+			}
+			skillTile.setOriginalY(y);
 			skillTile.revalidate();
 
 			SkillWidgetGroup widgetGroup = groups[idx];
@@ -129,7 +157,7 @@ public class SkillsOrganizerPlugin extends Plugin
 		left.setOriginalWidth(36);
 		left.setOriginalHeight(36);
 		left.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-		left.setXPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		left.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 		left.setOriginalX(-2);
 		left.setOriginalY(-2);
 		left.setOpacity(90);
@@ -141,26 +169,35 @@ public class SkillsOrganizerPlugin extends Plugin
 		right.setOriginalWidth(36);
 		right.setOriginalHeight(36);
 		right.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
-		right.setXPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		right.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 		right.setOriginalX(28);
 		right.setOriginalY(-2);
 		right.setOpacity(90);
 		right.setHidden(true);
 		right.revalidate();
 
-		Widget darken = skillTile.createChild(-1, WidgetType.RECTANGLE);
-		darken.setXPositionMode(WidgetPositionMode.ABSOLUTE_CENTER);
+		int newChildIndex = skillTile.getChildren() != null ? skillTile.getChildren().length : 0;
+		Widget darken = skillTile.createChild(newChildIndex, WidgetType.RECTANGLE);
+		darken.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
+		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
+		darken.setOriginalX(0);
+		darken.setOriginalY(0);
 		darken.setYPositionMode(WidgetPositionMode.ABSOLUTE_CENTER);
-		darken.setWidthMode(WidgetSizeMode.MINUS);
-		darken.setHeightMode(WidgetSizeMode.MINUS);
-		darken.setOriginalWidth(0);
-		darken.setOriginalHeight(0);
+		darken.setWidthMode(WidgetSizeMode.ABSOLUTE);
+		darken.setHeightMode(WidgetSizeMode.ABSOLUTE);
+		darken.setOriginalWidth(skillTile.getWidth());
+		darken.setOriginalHeight(skillTile.getHeight());
 		darken.setFilled(true);
 		darken.setTextColor(Color.BLACK.getRGB());
 		darken.setOpacity(90);
 		darken.setHidden(true);
 		darken.revalidate();
 
+		clientThread.invokeLater(() -> {
+			darken.setOriginalWidth(skillTile.getWidth());
+			darken.setOriginalHeight(skillTile.getHeight());
+			darken.revalidate();
+		});
 
 		SkillWidgetGroup newGroup = new SkillWidgetGroup(left, right, darken);
 		groups[idx] = newGroup;
