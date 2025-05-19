@@ -108,13 +108,7 @@ public class SkillsOrganizerPlugin extends Plugin
 			skillTile.setXPositionMode(WidgetPositionMode.ABSOLUTE_LEFT);
 			skillTile.setYPositionMode(WidgetPositionMode.ABSOLUTE_TOP);
 			skillTile.setOriginalX(skillPositionConfig.getX());
-
-			// 🎯 Special-case the 2nd skill (idx = 1) to move it 1px lower
-			int y = skillPositionConfig.getY();
-			if (idx == 1) {
-				y += 1;
-			}
-			skillTile.setOriginalY(y);
+			skillTile.setOriginalY(skillPositionConfig.getY());
 			skillTile.revalidate();
 
 			SkillWidgetGroup widgetGroup = groups[idx];
