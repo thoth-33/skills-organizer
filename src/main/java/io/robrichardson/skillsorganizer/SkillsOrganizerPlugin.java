@@ -65,6 +65,7 @@ public class SkillsOrganizerPlugin extends Plugin
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event) {
 		if (event.getScriptId() == SCRIPTID_STATS_SKILLTOTAL) {
+			resetSkillBars();
 			setupSkillBars();
 		}
 	}
