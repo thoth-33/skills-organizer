@@ -16,7 +16,6 @@ import net.runelite.client.callback.ClientThread;
 import java.awt.Color;
 import java.util.Objects;
 import net.runelite.api.events.GameStateChanged;
-import net.runelite.api.events.WidgetLoaded;
 
 @Slf4j
 @PluginDescriptor(
@@ -67,15 +66,8 @@ public class SkillsOrganizerPlugin extends Plugin
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event) {
 		if (event.getScriptId() == SCRIPTID_STATS_SKILLTOTAL) {
+			resetSkillBars();
 			setupSkillBars();
-		}
-	}
-	@Subscribe
-	public void onWidgetLoaded(WidgetLoaded event)
-	{
-		if (event.getGroupId() == WidgetInfo.SKILLS_CONTAINER.getGroupId())
-		{
-			clientThread.invokeLater(this::setupSkillBars);
 		}
 	}
 	@Subscribe
@@ -86,7 +78,6 @@ public class SkillsOrganizerPlugin extends Plugin
 	}
 
 	private void setupSkillBars() {
-		resetSkillBars();
 		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
 		if (skillsContainer == null) {
 			return;
